@@ -1,0 +1,96 @@
+body {
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #7dfce2; 
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.logopgs{
+    display: flex;
+    width: 50%;
+    margin: auto;
+}
+
+h1 {
+    color: #08726c; 
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #4c8c8c; 
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    outline: 0;
+    resize: vertical; 
+    font-family: monospace; 
+}
+
+button {
+    background-color: #04ae8c; 
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+    margin-top: 10px; 
+}
+
+button:hover {
+    background-color: #039578;
+}
+
+p#resultado {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    color: #333;
+}
+
+
+.container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 100%;
+    max-width: 600px; 
+    margin: 0 auto; 
+}
+
+
+@media (max-width: 600px) {
+
+    .logopgs{
+        width: 40%;
+    }
+    .container {
+        padding: 15px;
+        max-width: 95%;
+    }
+
+    textarea {
+        font-size: 0.9em;
+    }
+
+    button {
+        padding: 12px;
+    }
+}
