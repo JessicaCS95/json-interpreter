@@ -4,10 +4,62 @@ document.addEventListener('DOMContentLoaded', function() {
     const paragrafoResultado = document.getElementById("resultado");
   
     const motivosErro = {
-      "00023": "Número de conta inválido",
-      "00024": "Saldo insuficiente",
-      "00025": "Transação não permitida",
-      "00026": "Cartão bloqueado"
+      "00001":{
+        motivo: " User  abandoned  the  transaction  in  the Bank",
+        descricao: "This  situation  happens  when  the  user closes  the browser  while  inside  the banking  portal  or  click  on  the  cancel transaction  button."
+      },
+      "00002":{
+        motivo: "Account  garnished",
+        descricao: " State  in  which  resources  cannot  be  debited  by  a  court  order."
+      },
+      "00003": {
+        motivo: "Inactive Account",
+        descricao: " This  situation  happens  when  the  user  exceeds  the  time  limit and  there  is  no  evidence  of  account  movements  in  terms  of withdrawals  within  a  time  established  by  the  financial  institution."
+      },
+      "00004": {
+        motivo: "Account  does  not  exist",
+        descricao: "This  should  be  sent  when  the  user  does  not  have an  enabled  or  valid  account  to  debit  the  payment."
+      },
+      "00005": {
+        motivo: "Account  not  enabled",
+        descricao: "State  in  which  the  resources  cannot  be  debited  given  that  the Financial  Entity  has  not  enabled  the  account  for  payments."
+      },
+      "00006": {
+        motivo: "Account  has  not  been  enabled",
+        descricao: "Esse número de conta não existe"
+      },
+      "00026": {
+        motivo: "Número de conta inválido",
+        descricao: "Esse número de conta não existe"
+      },
+      "00026": {
+        motivo: "Número de conta inválido",
+        descricao: "Esse número de conta não existe"
+      },
+      "00026": {
+        motivo: "Número de conta inválido",
+        descricao: "Esse número de conta não existe"
+      },
+      "00026": {
+        motivo: "Número de conta inválido",
+        descricao: "Esse número de conta não existe"
+      },
+      "00026": {
+        motivo: "Número de conta inválido",
+        descricao: "Esse número de conta não existe"
+      },
+      "00026": {
+        motivo: "Número de conta inválido",
+        descricao: "Esse número de conta não existe"
+      },
+      "00026": {
+        motivo: "Número de conta inválido",
+        descricao: "Esse número de conta não existe"
+      },
+      "00026": {
+        motivo: "Número de conta inválido",
+        descricao: "Esse número de conta não existe"
+      },
       //Códigos de Exemplo
     };
   
@@ -51,14 +103,14 @@ document.addEventListener('DOMContentLoaded', function() {
   
       if (idAutorizacao) {
         // Verificar se o código tem um significado
-        const significado = motivosErro[idAutorizacao];
-        if (significado) {
-          paragrafoResultado.textContent = `ID de Autorização: ${idAutorizacao} - Motivo: ${significado}`;
+        const motivoErroEncontrado = motivosErro[idAutorizacao];
+        if (motivoErroEncontrado) {
+          paragrafoResultado.innerHTML = `<strong>ID de Autorização:</strong> ${idAutorizacao} <strong>Motivo:</strong> ${motivoErroEncontrado.motivo} <strong>Descrição:</strong> ${motivoErroEncontrado.descricao}`;
         } else {
-          paragrafoResultado.textContent = `ID de Autorização: ${idAutorizacao} - Motivo não encontrado`;
+          paragrafoResultado.innerHTML = `ID de Autorização: ${idAutorizacao} - Motivo não encontrado`;
         }
       } else {
-        paragrafoResultado.textContent = "ID de Autorização não encontrado.";
+        paragrafoResultado.innerHTML = "ID de Autorização não encontrado.";
       }
     });
   });
