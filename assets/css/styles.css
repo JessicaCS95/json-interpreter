@@ -1,5 +1,4 @@
 body {
-    height: 100vh;
     font-family: Arial, sans-serif;
     background-color: #7dfce2; 
     padding: 0;
@@ -9,10 +8,24 @@ body {
     align-items: center;
 }
 
+
+.buttonmenu{
+    display: flex;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    width: auto;
+}
+
 .logopgs{
     display: flex;
     width: 50%;
     margin: auto;
+}
+
+a{
+    text-decoration: none;
+    color: #ffffff;
 }
 
 h1 {
@@ -63,9 +76,13 @@ p#resultado {
     color: #333;
     font-size: 16px;
     color: #333;
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: flex-start;
+}
+
+#resultado:not(:empty) {
+    display: flex;
 }
 
 @media (max-width: 600px) {
