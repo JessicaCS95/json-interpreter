@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const TextFieldJson = document.getElementById("TextFieldJson");
     const Result = document.getElementById("Result");
   
-    const errorReason = {
+    const errorReasons = {
       "00001":{
         reason: " User  abandoned  the  transaction  in  the Bank",
       description: "This  situation  happens  when  the  user closes  the browser  while  inside  the banking  portal  or  click  on  the  cancel transaction  button."
@@ -71,8 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
       "00017": {
         reason: "User does not have PSE payments enabled",
       description: "Applies if the user does not have the service enabled of PSE in your Financial Entity. If the entity has By default enabled PSE service for all users should not generate count"
-
-
       },
       "00018": {
         reason: "Change of status in the transaction -Operated from the ACH platform",
@@ -97,7 +95,6 @@ document.addEventListener('DOMContentLoaded', function() {
       "00023": {
         reason: "User does not present activity in PSE (TIMEOUT)",
       description: "The user remains on the Protected ACH (Registration) page without clicking on the “Go to Bank” button, which is why the time out is generated according to the waiting time parameter in PSE"
-
       },
       "00024": {
         reason: "Transaction rejected due to suspicion of fraud in banking entity",
@@ -115,8 +112,6 @@ document.addEventListener('DOMContentLoaded', function() {
         reason: "INVALID OTP (Valid for integration of PSE Advance)",
       description: "The user entered OTP that is not valid or does not comply"
       },
-
-      
     };
   
     Submit.addEventListener("click", function() {
@@ -158,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
       if (authId) {
         // verify if code it's simplified 
-        const foundErrors = errorReason[authId];
+        const foundErrors = errorReasons[authId];
         if (foundErrors) {
           Result.innerHTML = `<strong>Error code:</strong> ${authId} <strong>Reason:</strong> ${foundErrors.reason} <strong>Description:</strong> ${foundErrorsdescription}`;
         } else {
