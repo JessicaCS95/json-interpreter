@@ -79,6 +79,7 @@ p#result {
     display: none;
     flex-direction: column;
     align-items: flex-start;
+    max-width: 650px;
 }
 
 #result:not(:empty) {
