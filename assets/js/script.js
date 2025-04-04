@@ -123,14 +123,18 @@ document.addEventListener('DOMContentLoaded', function () {
             const dataJson = JSON.parse(inserted);
 
             // Tries to find error code directly or inside pay_response
-            if (dataJson.idAuth) {
-                authId = dataJson.idAuth;
-            } else if (dataJson.pay_response) {
+            if (dataJson.authorizationID) {
+                authId = dataJson.authorizationID;
+
+            } else if (dataJson.pay_response && typeof dataJson.pay_response === 'string') {
                 // If there's pay_response, also tries to analyze as JSON
                 try {
                     const payResponseDados = JSON.parse(dataJson.pay_response);
-                    if (payResponseDados.idAuth) {
-                        authId = payResponseDados.idAuth;
+                    if (payResponseDados.authorizationID) {
+
+                        authId = payResponseDados.authorizationID;
+                    } else{
+                        console.log("authorizationID not found inside pay_response")
                     }
                 } catch (erroPayResponse) {
                     // If it fails to analyze pay_response
@@ -139,15 +143,17 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         } catch (erroJson) {
             console.error("Could not analyze JSON:", erroJson);
-        }
 
-        // If it doesn't find a valid JSON, it tries regex (Regular Expression)
-        if (!authId) {
+            console.log("Trying to fallback with Regex...");
             const regex = /"authorizationID"\s*:\s*"([^"]*)"/i;
             const match = inserted.match(regex);
 
-            if (match) {
+             // If it doesn't find a valid JSON, it tries regex (Regular Expression)
+            if (match && match[1]) {
                 authId = match[1];
+                console.log("Found authorizationID via Regex");
+            } else{
+                console.log("authorizationID not found via Regex ");
             }
         }
 
